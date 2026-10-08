@@ -272,7 +272,7 @@ void system18_set_vdp_mixing(int mixing);
 
 /* vidhrdw/segac2.c */
 void update_system18_vdp( struct mame_bitmap *bitmap, const struct rectangle *cliprect );
-void start_system18_vdp(void);
+int start_system18_vdp(void);
 READ16_HANDLER( segac2_vdp_r );
 WRITE16_HANDLER( segac2_vdp_w );
 

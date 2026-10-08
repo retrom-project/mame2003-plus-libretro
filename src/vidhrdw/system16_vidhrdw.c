@@ -95,7 +95,7 @@ type1		type0			function
 
 /* vidhrdw/segac2.c */
 extern void update_system18_vdp( struct mame_bitmap *bitmap, const struct rectangle *cliprect );
-extern void start_system18_vdp(void);
+extern int start_system18_vdp(void);
 extern READ16_HANDLER( segac2_vdp_r );
 extern WRITE16_HANDLER( segac2_vdp_w );
 data16_t sys18_ddcrew_bankregs[0x20];
