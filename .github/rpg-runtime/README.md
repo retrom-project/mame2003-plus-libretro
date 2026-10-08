@@ -25,10 +25,10 @@ The candidate recipe runs the native regression, archives only source paths,
 and builds with the pinned Emscripten image and EmulatorJS RetroArch linker in
 `retrom-fork.json`. It produces `mame2003_plus-wasm.data`, `LICENSE.md`,
 `source.tar.gz` and `retrom-core-candidate.json`. All drivers remain enabled.
-The Web package enables the existing `mame2003-plus_skip_disclaimer` and
-`mame2003-plus_skip_warnings` options in `MAME 2003-Plus/MAME 2003-Plus.opt`,
-so core startup prompts do not cover a restored game. These names and the
-option path match `core_options.c` and the core library name.
+The core defaults `skip_disclaimer` and `skip_warnings` to enabled, so startup
+prompts do not cover a cold-restored game. This is set in `core_options.c`;
+the EmulatorJS settings callback replaces `.opt` files during startup, so the
+package does not rely on a prewritten option file.
 The core owns its CHD implementation, so the frontend CHD reader is disabled
 to avoid duplicate symbols; core driver CHD support is retained.
 No game files or external BIOS downloads are included. Runtime only consumes
