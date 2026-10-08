@@ -35,7 +35,7 @@ install -m 0644 "$work/raw/mame2003_plus_libretro.js" "$stage/"
 install -m 0644 "$work/raw/mame2003_plus_libretro.wasm" "$stage/"
 install -m 0644 "$root/LICENSE.md" "$stage/license.txt"
 printf '%s\n' '{"minimumEJSVersion":"4.2.2","version":"1.2"}' > "$stage/build.json"
-printf '%s\n' '{"name":"mame2003_plus","extensions":["zip"],"makeoptions":{"buildpath":"./","makescript":"Makefile","arguments":[]},"options":{},"save":false,"license":"LICENSE.md","repo":"https://github.com/retrom-project/mame2003-plus-libretro"}' > "$stage/core.json"
+printf '%s\n' '{"name":"mame2003_plus","extensions":["zip"],"makeoptions":{"buildpath":"./","makescript":"Makefile","arguments":[]},"options":{"file":"MAME 2003-Plus/MAME 2003-Plus.opt","settings":{"mame2003-plus_skip_disclaimer":"enabled","mame2003-plus_skip_warnings":"enabled"}},"save":false,"license":"LICENSE.md","repo":"https://github.com/retrom-project/mame2003-plus-libretro"}' > "$stage/core.json"
 
 (cd "$stage" && 7z a -mtm=off -mta=off -mtc=off -bd -bso0 -bsp0 -t7z "$output/mame2003_plus-wasm.data" \
   mame2003_plus_libretro.js mame2003_plus_libretro.wasm build.json core.json license.txt)
