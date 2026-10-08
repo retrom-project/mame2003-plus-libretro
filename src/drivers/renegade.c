@@ -117,6 +117,7 @@ WRITE_HANDLER( renegade_flipscreen_w );
 extern UINT8 *renegade_videoram2;
 
 static int bank;
+static int irq_phase;
 
 /* MCU */
 static int from_main;
@@ -164,6 +165,20 @@ static void setbank(void)
 static void setup_statesave(void)
 {
 	state_save_register_int("renegade", 0, "bank", &bank);
+	state_save_register_int("renegade", 0, "irq_phase", &irq_phase);
+	state_save_register_int("renegade", 0, "from_main", &from_main);
+	state_save_register_int("renegade", 0, "from_mcu", &from_mcu);
+	state_save_register_int("renegade", 0, "main_sent", &main_sent);
+	state_save_register_int("renegade", 0, "mcu_sent", &mcu_sent);
+	state_save_register_UINT8("renegade", 0, "ddr_a", &ddr_a, 1);
+	state_save_register_UINT8("renegade", 0, "ddr_b", &ddr_b, 1);
+	state_save_register_UINT8("renegade", 0, "ddr_c", &ddr_c, 1);
+	state_save_register_UINT8("renegade", 0, "port_a_in", &port_a_in, 1);
+	state_save_register_UINT8("renegade", 0, "port_b_in", &port_b_in, 1);
+	state_save_register_UINT8("renegade", 0, "port_c_in", &port_c_in, 1);
+	state_save_register_UINT8("renegade", 0, "port_a_out", &port_a_out, 1);
+	state_save_register_UINT8("renegade", 0, "port_b_out", &port_b_out, 1);
+	state_save_register_UINT8("renegade", 0, "port_c_out", &port_c_out, 1);
 	state_save_register_func_postload(setbank);
 }
 
@@ -310,9 +325,8 @@ static INTERRUPT_GEN( renegade_interrupt )
 	else coin = 0;
 */
 
-	static int count;
-	count = !count;
-	if (count)
+	irq_phase = !irq_phase;
+	if (irq_phase)
 		cpu_set_irq_line(0, IRQ_LINE_NMI, PULSE_LINE);
 	else
 		cpu_set_irq_line(0, 0, HOLD_LINE);
@@ -869,6 +883,6 @@ ROM_END
 
 
 GAME( 1986, renegade, 0,		    renegade, renegade, renegade, ROT0, "Technos (Taito America license)", "Renegade (US)" )
-GAME( 1986, renegadeb,renegade, kuniokub, renegade, 0,        ROT0, "bootleg", "Renegade (US bootleg)" )
+GAME( 1986, renegadeb,renegade, kuniokub, renegade, renegade,        ROT0, "bootleg", "Renegade (US bootleg)" )
 GAME( 1986, kuniokun, renegade, renegade, renegade, renegade, ROT0, "Technos", "Nekketsu Kouha Kunio-kun (Japan)" )
-GAME( 1986, kuniokub, renegade, kuniokub, renegade, 0, 	      ROT0, "bootleg", "Nekketsu Kouha Kunio-kun (Japan bootleg)" )
+GAME( 1986, kuniokub, renegade, kuniokub, renegade, renegade, 	      ROT0, "bootleg", "Nekketsu Kouha Kunio-kun (Japan bootleg)" )

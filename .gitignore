@@ -6,3 +6,6 @@
 *.so
 package.json
 .npmignore
+
+.retrom-build/
+__pycache__/

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "forkRepository": "https://github.com/retrom-project/mame2003-plus-libretro",
+  "defaultBranch": "retrom/g09e84fe55799",
+  "upstreamMirrorBranch": "master",
+  "upstreams": [
+    {
+      "role": "emulatorjs-core",
+      "repository": "https://github.com/EmulatorJS/mame2003-plus-libretro",
+      "refType": "COMMIT",
+      "ref": "09e84fe55799031e225b9da5e526d82ee85b9cd8",
+      "commit": "09e84fe55799031e225b9da5e526d82ee85b9cd8"
+    },
+    {
+      "role": "emulatorjs-retroarch-linker",
+      "repository": "https://github.com/EmulatorJS/RetroArch",
+      "refType": "COMMIT",
+      "ref": "6dd4353937ef48b6ec0bfbdbb15d1c5992d86927",
+      "commit": "6dd4353937ef48b6ec0bfbdbb15d1c5992d86927"
+    }
+  ],
+  "adapterAbi": "emulatorjs-state-v1",
+  "releaseAssets": [
+    "mame2003_plus-wasm.data",
+    "LICENSE.md",
+    "source.tar.gz",
+    "rpg-runtime-release.json"
+  ]
+}

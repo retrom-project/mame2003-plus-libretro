@@ -5,6 +5,7 @@
 ***************************************************************************/
 
 #include "driver.h"
+#include "state.h"
 #include "vidhrdw/generic.h"
 
 UINT8 *renegade_videoram2;
@@ -77,6 +78,7 @@ VIDEO_START( renegade )
 	if (!bg_tilemap || !fg_tilemap)
 		return 1;
 
+	state_save_register_int("renegade", 0, "scrollx", &renegade_scrollx);
 	tilemap_set_transparent_pen(fg_tilemap,0);
 	tilemap_set_scrolldx( bg_tilemap, 256, 0 );
 	return 0;
